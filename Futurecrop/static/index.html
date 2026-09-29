@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6ef">
+  <title>FutureCrop | Market outlook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="FutureCrop home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>future<span class="brand-light">crop</span></span>
+      </a>
+      <div class="topbar-meta"><span class="live-dot"></span> INDIA MARKET OUTLOOK</div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow">PLAN THE NEXT HARVEST</p>
+          <h1 id="page-title">Know your market<br><span>before it moves.</span></h1>
+          <p class="intro-text">A simple forward look at crop prices, grounded in recent market data.</p>
+        </div>
+        <div class="season-stamp" aria-label="Farmers first, future focused">
+          <span class="stamp-sun" aria-hidden="true">✳</span>
+          <span>GROW WITH<br>GOOD TIMING</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Crop price prediction">
+        <form class="search-panel" id="prediction-form">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">YOUR MARKET</p>
+              <h2>Set your outlook</h2>
+            </div>
+            <span class="step-label"><span>01</span> / 02</span>
+          </div>
+
+          <label class="field">
+            <span>State <b aria-hidden="true">*</b></span>
+            <select name="state" required>
+              <option value="" selected disabled>Select a state</option>
+              <option>Andhra Pradesh</option>
+              <option>Karnataka</option>
+              <option>Maharashtra</option>
+              <option>Tamil Nadu</option>
+              <option>Telangana</option>
+            </select>
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span>District <small>Optional</small></span>
+              <input name="district" type="text" placeholder="e.g. Pune" autocomplete="address-level2">
+            </label>
+            <label class="field">
+              <span>Market <small>Optional</small></span>
+              <select name="market">
+                <option value="">Any market</option>
+                <option>Central Mandai</option>
+                <option>Local Market</option>
+                <option>Main Market</option>
+                <option>Wholesale Yard</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Crop <b aria-hidden="true">*</b></span>
+            <input name="crop" type="text" list="crop-options" placeholder="Search or enter a crop" required autocomplete="off">
+            <datalist id="crop-options">
+              <option value="Ash gourd"><option value="Banana"><option value="Barley"><option value="Broad beans">
+              <option value="Bajra"><option value="Beetroot"><option value="Bengal gram">
+              <option value="Black gram"><option value="Bottle gourd"><option value="Brinjal">
+              <option value="Cabbage"><option value="Capsicum"><option value="Carrot">
+              <option value="Cauliflower"><option value="Cluster beans"><option value="Corn">
+              <option value="Cotton"><option value="Cucumber"><option value="Drumstick"><option value="Elephant foot yam">
+              <option value="Field beans"><option value="Green beans"><option value="Ivy gourd">
+              <option value="Jackfruit"><option value="Jowar"><option value="Jute">
+              <option value="Lady's finger"><option value="Mango"><option value="Onion">
+              <option value="Papaya"><option value="Paddy"><option value="Peas">
+              <option value="Potato"><option value="Pomegranate"><option value="Pumpkin">
+              <option value="Radish"><option value="Rice"><option value="Ridge gourd">
+              <option value="Snake gourd"><option value="Spinach"><option value="Squash">
+              <option value="Sugarcane"><option value="Sweet potato"><option value="Tomato">
+              <option value="Turnip"><option value="Wheat">
+            </datalist>
+          </label>
+
+          <label class="field">
+            <span>Forecast month <b aria-hidden="true">*</b></span>
+            <input name="month" type="month" required>
+          </label>
+
+          <button class="submit-button" type="submit">
+            <span>See price outlook</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="form-note">Prices are estimates, not a guarantee of future market rates.</p>
+        </form>
+
+        <section class="results-panel" id="results-panel" aria-live="polite" aria-label="Prediction results">
+          <div class="empty-state" id="empty-state">
+            <div class="field-illustration" aria-hidden="true">
+              <span class="field-sun"></span><span class="field-row-one"></span><span class="field-row-two"></span><span class="field-row-three"></span>
+              <span class="sprout sprout-one">✳</span><span class="sprout sprout-two">✳</span>
+            </div>
+            <p class="eyebrow">A CLEARER VIEW AHEAD</p>
+            <h2>Your next move<br>starts with a signal.</h2>
+            <p>Choose a crop and market to see its projected price for the month ahead.</p>
+            <div class="empty-foot"><span class="live-dot"></span> RECENT DATA + MODEL ESTIMATE</div>
+          </div>
+
+          <div class="result-content" id="result-content" hidden>
+            <div class="result-heading">
+              <div>
+                <p class="eyebrow">PRICE OUTLOOK <span class="result-location" id="result-location"></span></p>
+                <h2 id="result-title">Crop outlook</h2>
+              </div>
+              <span class="result-date" id="result-month"></span>
+            </div>
+            <div class="price-highlight">
+              <span class="price-label">PROJECTED PRICE</span>
+              <div class="price-line"><span id="predicted-price">₹0</span><span class="price-unit">/ quintal</span></div>
+              <span class="change-pill" id="price-change">—</span>
+            </div>
+            <div class="comparison" aria-label="Current and projected price comparison">
+              <div class="comparison-head"><span>PRICE COMPARISON</span><span>₹ / QUINTAL</span></div>
+              <div class="bar-row">
+                <span class="bar-name">Current</span>
+                <div class="bar-track"><span class="bar-fill current-fill" id="current-bar"></span></div>
+                <strong id="current-price">₹0</strong>
+              </div>
+              <div class="bar-row">
+                <span class="bar-name">Projected</span>
+                <div class="bar-track"><span class="bar-fill projected-fill" id="predicted-bar"></span></div>
+                <strong id="comparison-predicted">₹0</strong>
+              </div>
+            </div>
+            <div class="result-foot">
+              <span class="source-icon" aria-hidden="true">i</span>
+              <span id="source-note">Based on recent prices and a simple projection model.</span>
+            </div>
+          </div>
+
+          <div class="loading-state" id="loading-state" hidden>
+            <span class="loader" aria-hidden="true"></span>
+            <p class="eyebrow">READING THE MARKET</p>
+            <h2>Finding your outlook...</h2>
+          </div>
+          <div class="error-message" id="error-message" role="alert" hidden></div>
+        </section>
+      </section>
+      <footer class="page-footer"><span>FUTURECROP</span><span>BETTER TIMING. STRONGER HARVESTS.</span></footer>
+    </main>
+  </div>
+</body>
+</html>
